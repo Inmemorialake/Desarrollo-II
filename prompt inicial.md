@@ -34,20 +34,24 @@ Mi API (Equipo 1 — Materiales/Fórmulas):
 
 Usuarios: responsable del laboratorio de Cutit (registra/consulta); API de Fabricación (consume); encargado de innovación/PI (indirectamente, vía validación cruzada).
 
-Épica transversal (EP-00): "Como dirección de Cutit Saws, quiero contar con una plataforma backend modular basada en servicios que integre materiales/fórmulas, fabricación, inventario, compras externas, notificaciones y vigilancia de patentes, para unificar la operación de la cadena de suministro y dejar el negocio listo para escalar o venderse en los próximos 5 años."
-
-Épica de mi API (EP-01): "Como responsable del laboratorio de Cutit, quiero registrar y consultar los materiales y las fórmulas usadas en la fabricación de cuchillas, para que el proceso de fabricación use siempre los insumos y proporciones correctas y trazables."
-CA de alto nivel de la épica (a desglosar, no a copiar):
-- "Dado un nuevo material o fórmula, cuando se registra vía POST /materiales, entonces queda disponible para ser consultado y consumido por Fabricación."
-- "Dado un id de material/fórmula existente, cuando se consulta vía GET /materiales/{id}, entonces se retorna su información completa."
-- "Dado un diseño de fórmula, cuando se solicita validación cruzada con Patent Sweep, entonces la API responde si hay riesgo de similitud con patentes vigentes."
+Épicas de mi API (a desglosar):
+1. EP-01: Gestión del Catálogo de Materiales e Insumos
+   - Definición: "Como Ingeniero de Materiales, quiero registrar, actualizar y consultar los materiales utilizados en la fabricación de cuchillas, para mantener un catálogo centralizado y confiable de insumos con sus propiedades técnicas."
+   - Integración SOA: Expone el catálogo base que será consultado para la estructuración de fórmulas y disponibilidad.
+2. EP-02: Gestión de Fórmulas y Recetas de Fabricación
+   - Definición: "Como Ingeniero de Materiales, quiero registrar y consultar las fórmulas de fabricación estructurando los materiales y sus proporciones exactas, para garantizar la trazabilidad y estandarización de las recetas de producción."
+   - Integración SOA: Consume los materiales validados en EP-01 y expone las fórmulas aprobadas para que la API de Fabricación valide órdenes de producción.
+3. EP-03: Verificación de Riesgo de Patentes en Materiales y Fórmulas
+   - Definición: "Como Analista de Cumplimiento, quiero verificar el estado legal y de patentes asociado a los materiales y fórmulas registrados, para anticipar riesgos de infracción de propiedad intelectual antes de pasar a fabricación."
+   - Integración SOA: Consume de forma síncrona/asíncrona la API de Patent Sweep (Equipo 2) enviando los componentes de la fórmula para recibir el dictamen de riesgo.
 
 1.3) Objetivo
-A partir de la épica EP-01, generar una primera versión del Product Backlog: HU con sus criterios de aceptación, trazables al caso de estudio, listas para que el equipo las priorice y estime.
+A partir de las épicas dadas, generar una primera versión del Product Backlog: HU con sus criterios de aceptación, trazables al caso de estudio, listas para que el equipo las priorice y estime.
 
 2) INSTRUCCIÓN
 - PASO 0 (obligatorio): muestra el glosario de dominio y lista tus dudas/ambigüedades. Espera mi respuesta antes de generar cualquier HU.
-- Descompón la épica en 4 a 7 HU pequeñas e independientes (INVEST). Usa formato Cohn.
+- Descompón las épicas en 4 a 7 HU pequeñas e independientes (INVEST). Usa formato Cohn.
+- Asigna cada HU a su épica de origen (EP-01, EP-02 o EP-03).
 - Cada HU: 2 a 4 CA con al menos 1 de camino feliz y 1 de falla/borde (obligatorio). Cita el fragmento fuente que la sustenta.
 - Marca "Estimable" (INVEST) y "Achievable" (SMART) como "Pendiente de validación por el equipo" — no las evalúes tú, no tienes visibilidad de la capacidad real del equipo.
 - Si asumiste algo no confirmado, decláralo como "Supuesto asumido" junto a esa HU.
