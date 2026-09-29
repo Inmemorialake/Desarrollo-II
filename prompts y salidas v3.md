@@ -43,9 +43,9 @@ Lista de Épicas de Entrada:
 3. HU-03 (Actualizar material): Yo como Ingeniero de Laboratorio, requiero modificar los datos de un material registrado, para mantener actualizada la información de los materiales.
 4. HU-04 (Eliminar/Inhabilitar material): Yo como Ingeniero de Laboratorio, requiero desactivar un material, para evitar que sea utilizado en futuras formulaciones por estar descontinuado.
 5. HU-05 (Crear Fórmula): Yo como Ingeniero de Laboratorio, requiero registrar una nueva fórmula para que sea usada en la fabricación de las cuchillas.
-6. HU-06 (Consultar Formula): Yo como ingeniero de laboratorio, requiero consultar una fórmula para conocer su composición y en qué punto de la validación se encuentra.
+6. HU-06 (Consultar Fórmula): Yo como ingeniero de laboratorio, requiero consultar una fórmula para conocer su composición y en qué punto de la validación se encuentra.
 7. HU-07 (Actualizar Fórmula): Yo como ingeniero de laboratorio, requiero modificar los materiales o proporciones de una fórmula existente, para corregirla o mejorarla antes de su uso en producción.
-8. HU-08 (Eliminar Formula): Yo como ingeniero de laboratorio, requiero descontinuar una fórmula, para evitar que el departamento de Fabricación produzca un producto con una fórmula que ya no está vigente.
+8. HU-08 (Eliminar Fórmula): Yo como ingeniero de laboratorio, requiero descontinuar una fórmula, para evitar que el departamento de Fabricación produzca un producto con una fórmula que ya no está vigente.
 9. HU-09 (Evaluar Patente): Yo como Ingeniero de Laboratorio, requiero solicitar la verificación legal de la composición de una fórmula, para garantizar que la mezcla no infrinja propiedad intelectual antes de ser aprobada para fabricación.
 
 </input_epics>
@@ -417,7 +417,7 @@ Escenario: Validación de Materiales - Inexistentes o Inactivos
 - El estado por defecto al crear una fórmula es BORRADOR.
 - El objeto de solicitud incluye un arreglo de componentes: componentes: [{ materialId, porcentaje }].
 
-## HU-06: Consultar Formula
+## HU-06: Consultar Fórmula
 
 **Épico:** Yo como ingeniero de laboratorio, requiero consultar una fórmula para conocer su composición y en qué punto de la validación se encuentra.
 
@@ -486,7 +486,7 @@ Escenario: Bloqueo de Inmutabilidad - Estado Aprobado
 
 - Solo las fórmulas en estado BORRADOR pueden ser modificadas directamente; una fórmula en estado APROBADA requiere la creación de una nueva versión/fórmula.
 
-## HU-08: Eliminar Formula
+## HU-08: Eliminar Fórmula
 
 **Épico:** Yo como ingeniero de laboratorio, requiero descontinuar una fórmula, para evitar que el departamento de Fabricación produzca un producto con una fórmula que ya no está vigente.
 
@@ -1472,7 +1472,7 @@ Escenario: Resultado Negativo de Patente - Rechazo Legal
 | **HU-03** | Actualizar material | 4 | **APROBADA** | Excelente definición de reglas transaccionales (rollback en HTTP 500) e integridad de datos. |
 | **HU-04** | Eliminar/Inhabilitar material | 4 | **APROBADA** | Correcta implementación de Soft Delete y manejo de conflicto por dependencia en fórmulas (HTTP 409). |
 | **HU-05** | Crear Fórmula | 5 | **APROBADA** | Inclusión acertada de la regla de negocio aritmética (100%) y código HTTP 422 para materiales inactivos/inexistentes. |
-| **HU-06** | Consultar Formula | 4 | **APROBADA** | Estructura impecable para dar soporte al consumo SOA por los Equipos 2 (Patentes) y 3 (Fabricación). |
+| **HU-06** | Consultar Fórmula | 4 | **APROBADA** | Estructura impecable para dar soporte al consumo SOA por los Equipos 2 (Patentes) y 3 (Fabricación). |
 | **HU-07** | Actualizar Fórmula | 5 | **APROBADA** | Especificación sobresaliente del bloqueo de inmutabilidad (HTTP 409) para fórmulas fuera de estado BORRADOR. |
-| **HU-08** | Eliminar Formula | 4 | **APROBADA** | Incorpora regla de negocio de trazabilidad (justificación obligatoria para descontinuar). |
+| **HU-08** | Eliminar Fórmula | 4 | **APROBADA** | Incorpora regla de negocio de trazabilidad (justificación obligatoria para descontinuar). |
 | **HU-09** | Evaluar Patente | 5 | **APROBADA** | Especificación de referencia SOA. Separa fallos de negocio de errores de integración (HTTP 503) con rollback de estado. |
